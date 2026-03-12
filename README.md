@@ -134,6 +134,8 @@ MODE: SOS
 MODE: OFF
 ```
 
+<img width="1523" height="999" alt="Screenshot (464)" src="https://github.com/user-attachments/assets/2708b98b-860e-4e5c-b948-3694e749e913" />
+
 ---
 
 ## Concepts Demonstrated
