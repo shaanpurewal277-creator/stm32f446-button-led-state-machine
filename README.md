@@ -21,6 +21,7 @@ This project demonstrates interrupt-driven button input with short-press and lon
 - Implements software debouncing
 - Detects button press and release using rising and falling edge interrupts
 - Uses interruptible timing so flashing and SOS patterns can stop immediately when the button is pressed
+- UART debugging output via USART2 for monitoring LED mode transitions.
 
 ---
 
@@ -81,12 +82,24 @@ OFF 1000 ms
 ON 100 ms
 
 ### SOS Pattern
-
 Standard Morse code SOS pattern:
 
 S = short short short  
 O = long long long  
 S = short short short
+
+---
+
+## Debug Output
+The firmware provides UART debug messages via USART2 that report
+state transitions between LED modes.
+
+Example output:
+
+MODE: ON  
+MODE: FLASH  
+MODE: SOS  
+MODE: OFF
 
 ---
 
