@@ -3,6 +3,9 @@
 Embedded C project for the STM32 Nucleo-F446 built using STM32CubeIDE.  
 This project demonstrates interrupt-driven button input with short-press and long-press detection controlling multiple LED modes.
 
+![20260310_230325](https://github.com/user-attachments/assets/0f753e33-9613-41aa-bb8d-fbb70734c31d)
+
+
 ---
 
 ## Features
