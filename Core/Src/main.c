@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
 
 /* USER CODE END Includes */
 
@@ -60,6 +61,7 @@ uint32_t previousTime = 0;
 uint32_t buttonPressStart = 0;
 
 volatile LedMode_t ledMode = MODE_OFF;
+LedMode_t lastReportedMode = MODE_OFF;
 
 /* USER CODE END PV */
 
@@ -67,12 +69,15 @@ volatile LedMode_t ledMode = MODE_OFF;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+
 /* USER CODE BEGIN PFP */
+void uart_print(char *msg);
 void quick_flash(void);
 void sos_pattern(void);
 uint8_t delay_abortable(uint32_t ms);
 uint8_t led_on_abortable(uint32_t ms);
 uint8_t led_off_abortable(uint32_t ms);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -177,6 +182,34 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  if (ledMode != lastReportedMode)
+	  {
+	      switch (ledMode)
+	      {
+	          case MODE_OFF:
+	              uart_print("MODE: OFF\r\n");
+	              break;
+
+	          case MODE_ON:
+	              uart_print("MODE: ON\r\n");
+	              break;
+
+	          case MODE_FLASH:
+	              uart_print("MODE: FLASH\r\n");
+	              break;
+
+	          case MODE_SOS:
+	              uart_print("MODE: SOS\r\n");
+	              break;
+
+	          default:
+	              uart_print("MODE: UNKNOWN\r\n");
+	              break;
+	      }
+
+	      lastReportedMode = ledMode;
+	  }
+
       switch (ledMode)
       {
           case MODE_OFF:
@@ -420,6 +453,11 @@ void sos_pattern(void)
 
     if (led_on_abortable(200)) return;
     if (led_off_abortable(1000)) return;
+}
+
+void uart_print(char *msg)
+{
+    HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
 }
 
 /* USER CODE END 4 */
