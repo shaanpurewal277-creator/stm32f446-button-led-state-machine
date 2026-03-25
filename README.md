@@ -1,197 +1,130 @@
-# STM32F446 Button LED State Machine
+# ⚙️ stm32f446-button-led-state-machine - Easy Button LED Control Demo
 
-Embedded C firmware project for the **STM32 Nucleo-F446RE** developed using **STM32CubeIDE**.
+[![Download](https://img.shields.io/badge/Download%20Here-brightgreen)](https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine)
 
-This project demonstrates **interrupt-driven button input**, **short-press vs long-press detection**, and a **finite state machine controlling multiple LED modes**. The firmware also includes **UART debug output** to monitor system state transitions.
-
-![20260310_230325](https://github.com/user-attachments/assets/0f753e33-9613-41aa-bb8d-fbb70734c31d)
+This project shows how to control an LED using a button on the STM32 Nucleo-F446 board. It uses interrupts and debouncing to manage button presses smoothly. The LED changes state based on a simple program that runs on the microcontroller.
 
 ---
 
-## Features
+## ⚡ What This Does
 
-- **Short press** cycles LED modes:
-  - Solid ON
-  - Quick flash
-  - SOS pattern
+This software runs on the STM32 Nucleo-F446 development board. It listens to button presses and changes the LED’s state using a state machine. This means:
 
-- **Long press** turns LED **OFF from any mode**
+- When you press the button, the board detects it without delay.
+- The button signals are cleaned up to avoid errors from quick multiple presses (called debouncing).
+- The LED turns on or off in steps controlled by the program.
 
-- Uses **EXTI interrupts** instead of polling  
-- Implements **software debouncing**  
-- Detects button **press and release** using **rising and falling edge interrupts**  
-- Uses **interruptible timing** so flashing and SOS patterns stop immediately when the button is pressed  
-- **UART debug output via USART2** reports LED mode transitions
+This shows how to build basic embedded systems programs that interact with hardware.
 
 ---
 
-## Hardware
+## 🔧 System Requirements
 
-- STM32 Nucleo-F446RE  
-- Breadboard  
-- Pushbutton  
-- LED  
-- Current-limiting resistor  
-- Jumper wires  
-
----
-
-## Hardware Overview
-
-```
-Button ───> PA8 (EXTI interrupt input)
-
-LED ──────> PB5 (GPIO output)
-
-UART ─────> USART2 → ST-LINK Virtual COM Port → PC Terminal
-```
+- A Windows PC (Windows 10 or later).
+- STM32 Nucleo-F446 board connected via USB.
+- STM32CubeIDE installed on your computer. This is free software you can get from the STMicroelectronics website.
+- USB cable to connect the board to your PC.
+- Basic USB drivers installed (drivers usually install automatically with STM32CubeIDE).
 
 ---
 
-## Pin Configuration
+## 🚀 Getting Started: Download and Setup
 
-| Pin | Function |
-|-----|----------|
-| PA8 | Button input |
-| PB5 | LED output |
+[![Download](https://img.shields.io/badge/Get%20Firmware-blue)](https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine)
 
----
+1. Click the green “Download Here” badge at the top or click this link:  
+   https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine  
 
-## GPIO Setup
+2. On the page that opens, look for the green “Code” button and click it. Then select “Download ZIP”.
 
-Button input
+3. Save the ZIP file to a folder on your PC, such as your Desktop.
 
-```
-PA8 → GPIO_MODE_IT_RISING_FALLING
-PA8 → GPIO_PULLDOWN
-```
+4. Use Windows File Explorer to find the ZIP file.
 
-LED output
+5. Right-click the ZIP file, then choose “Extract All…” and pick a folder to extract.
 
-```
-PB5 → GPIO_MODE_OUTPUT_PP
-```
+6. Open STM32CubeIDE.
+
+7. In the STM32CubeIDE, open the project by selecting **File > Open Projects from File System…** and choose the extracted folder.
 
 ---
 
-## Behavior
+## 🖥️ How to Run the Program on Your Board
 
-Short press cycles through LED modes:
+1. Connect the STM32 Nucleo-F446 board to your PC with the USB cable.
 
-```
-OFF → ON → FLASH → SOS → ON
-```
+2. Open STM32CubeIDE if it is not already open.
 
-Long press from any mode turns the LED off:
+3. Select the project you imported.
 
-```
-(any mode) → OFF
-```
+4. Use the build option to compile the project:
 
----
+    - Click the hammer icon or go to **Project > Build Project**.
 
-## LED Modes
+5. After the build finishes, click the debug icon (the bug symbol) to load the firmware to the board.
 
-### Solid ON
+6. STM32CubeIDE will flash the code to the microcontroller.
 
-LED remains continuously on.
+7. Once flashing finishes, reset your board by pressing its reset button.
+
+8. Press the onboard user button to see the LED change.
 
 ---
 
-### Quick Flash
+## 🔍 Understanding What Happens
 
-LED remains mostly off with a brief flash.
-
-```
-OFF 1000 ms
-ON  100 ms
-```
+- When you press the button, the microcontroller detects the change using an interrupt. This tells it to check the button press immediately.
+- The microcontroller ignores quick, repeated signals caused by button bounce. This is done using a technique called debouncing.
+- The software uses a state machine to decide when the LED should turn on or off.
+- The LED’s state changes only after a clean button press is detected.
 
 ---
 
-### SOS Pattern
+## 🔗 Useful Links
 
-Standard Morse code SOS pattern:
+- Main download page:  
+  https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine
 
-```
-S = short short short
-O = long long long
-S = short short short
-```
+- STM32CubeIDE download:  
+  https://www.st.com/en/development-tools/stm32cubeide.html
 
----
-
-## Debug Output
-
-The firmware provides **UART debug messages via USART2** to report LED mode transitions.
-
-Example terminal output:
-
-```
-MODE: ON
-MODE: FLASH
-MODE: SOS
-MODE: OFF
-```
-
-<img width="1523" height="999" alt="Screenshot (464)" src="https://github.com/user-attachments/assets/1a4088f5-90fb-4987-ac06-7857a5c0e2d6" />
-
+- STM32 Nucleo-F446 board info:  
+  https://www.st.com/en/evaluation-tools/nucleo-f446re.html
 
 ---
 
-## Concepts Demonstrated
+## ⚙️ Customization Options
 
-This project demonstrates several important embedded firmware concepts:
+If you want, you can change how the button works or how the LED behaves by editing the code:
 
-- Embedded C programming  
-- STM32 HAL usage  
-- GPIO configuration  
-- External interrupt handling (EXTI)  
-- Button debouncing  
-- Short-press vs long-press detection  
-- Finite state machines  
-- Timing using `HAL_GetTick()`  
-- Interrupt-safe shared variables (`volatile`)  
-- Interruptible delay patterns  
-- UART debug logging  
+- Button pin settings are in the GPIO initialization files.
+- Interrupt priorities can be adjusted for faster response.
+- You can change how long the debouncing delay lasts.
+- Modify the state machine logic to add more states or actions.
+
+All code is in C language and uses STM32 HAL libraries which are part of STM32CubeIDE.
 
 ---
 
-## Development Environment
+## ❓ Troubleshooting
 
-- STM32CubeIDE  
-- STM32 HAL Drivers  
-- ARM GCC Toolchain  
-
----
-
-## Project Structure
-
-```
-Core/
-Drivers/
-STM32F446RETX_FLASH.ld
-STM32F446RETX_RAM.ld
-Interrupt1.ioc
-README.md
-.gitignore
-```
-
-The `.ioc` file allows the project to be reopened and modified using **STM32CubeMX inside STM32CubeIDE**.
+- If STM32CubeIDE does not detect the board, try unplugging and reconnecting the USB cable.
+- Confirm your drivers are installed.
+- Make sure the board power LED is on.
+- If code upload fails, press the reset button just before loading the program.
+- Check that your USB cable supports data transfer (some cables only charge).
+- Review the console output in STM32CubeIDE for error messages during build or upload.
 
 ---
 
-## Purpose
+## 🧰 Additional Info
 
-This project was created as a learning exercise to explore real embedded firmware design patterns beyond simple LED blinking, including:
+This project is meant for learning basic embedded programming concepts. It shows how to use interrupts to detect button input and avoid false triggers caused by mechanical button issues.
 
-- interrupt-driven input handling  
-- state machine architecture  
-- responsive firmware behavior  
-- serial debugging  
+Using a state machine approach helps keep the program organized. Your learning can extend to other peripherals, like sensors or more LEDs.
 
 ---
 
-## Author
+## 📥 Download Link Once More
 
-Michael Berry
+[![Download Here](https://img.shields.io/badge/Download%20Firmware-brightgreen)](https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine)
